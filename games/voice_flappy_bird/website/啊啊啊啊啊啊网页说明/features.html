@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏特色 - 啊啊啊啊啊啊啊啊声控Flappy Bird</title>
+    <meta name="description" content="探索啊啊啊啊啊啊啊啊的独特声控机制、像素复古美术风格和创新游戏体验。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-b from-purple-400 via-pink-300 to-blue-200 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-xl font-bold pixel-font">啊啊啊啊啊啊啊啊</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">首页</a>
+                        <a href="features.html" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">游戏特色</a>
+                        <a href="gameplay.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">玩法介绍</a>
+                        <a href="dev-log.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">开发日志</a>
+                        <a href="../../index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors bg-green-600 hover:bg-green-500 rounded-full">试玩</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">首页</a>
+                <a href="features.html" class="text-white block px-3 py-2 rounded-md text-base font-medium">游戏特色</a>
+                <a href="gameplay.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">玩法介绍</a>
+                <a href="dev-log.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">开发日志</a>
+                <a href="../../index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">试玩</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- 标题区域 -->
+        <section class="py-20 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl md:text-6xl font-bold text-white pixel-font mb-6 drop-shadow-lg">
+                    游戏特色
+                </h1>
+                <p class="text-xl text-white mb-8 drop-shadow-md">
+                    探索啊啊啊啊啊啊啊啊的独特魅力与创新体验
+                </p>
+            </div>
+        </section>
+
+        <!-- 声控核心特色 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold text-gray-800 mb-6 pixel-font">🎤 革命性声控操作</h2>
+                        <div class="space-y-4 text-gray-700">
+                            <p class="text-lg leading-relaxed">
+                                告别传统的触屏点击！啊啊啊啊啊啊啊啊采用创新的声控技术，通过<strong>音量阈值检测</strong>来控制小鸟的飞扑动作。
+                            </p>
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                                <h3 class="font-bold text-blue-800 mb-2">核心机制</h3>
+                                <ul class="space-y-2 text-blue-700">
+                                    <li>• 发出短促声音（如"啊"、拍手、吹气）</li>
+                                    <li>• 系统检测音量超过预设阈值</li>
+                                    <li>• 小鸟立即向上飞扑</li>
+                                    <li>• 支持个性化声音校准</li>
+                                </ul>
+                            </div>
+                            <p class="text-lg">
+                                这种全新的交互方式不仅带来新鲜感，还增加了<span class="text-purple-600 font-bold">身体参与感</span>和<span class="text-purple-600 font-bold">社交传播性</span>。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6 text-center">声音可视化反馈</h3>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-6 backdrop-blur-sm">
+                            <div class="mb-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm">音量检测</span>
+                                    <span class="text-sm">阈值线</span>
+                                </div>
+                                <div class="bg-gray-200 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-green-400 to-yellow-400 h-full rounded-full animate-pulse" style="width: 65%"></div>
+                                </div>
+                                <div class="text-center mt-2 text-sm opacity-75">实时音量反馈</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl mb-2">🐦</div>
+                                <div class="text-sm">当音量超过阈值时，小鸟执行飞扑</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 声音校准功能 -->
+        <section class="py-16 bg-gradient-to-r from-green-400 to-blue-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white pixel-font mb-4">🎛️ 智能声音校准</h2>
+                    <p class="text-xl text-white opacity-90">适应不同环境，优化声控体验</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg p-6 shadow-xl">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl">1</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">环境检测</h3>
+                            <p class="text-gray-600">自动检测周围噪音水平，建议最佳音量阈值</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-xl">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl">2</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">个性化调节</h3>
+                            <p class="text-gray-600">根据个人发声习惯，调整灵敏度参数</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-xl">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl">3</div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">实时测试</h3>
+                            <p class="text-gray-600">提供测试功能，确保声控操作准确可靠</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 经典玩法传承 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="bg-gradient-to-br from-red-400 to-pink-500 rounded-xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6 text-center">经典游戏流程</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                                <span>小鸟持续向右飞行</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                                <span>随机出现管道障碍</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                                <span>声控小鸟避开障碍</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                                <span>成功穿过得分+1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-bold text-gray-800 mb-6 pixel-font">🎮 经典Flappy Bird体验</h2>
+                        <div class="space-y-4 text-gray-700">
+                            <p class="text-lg leading-relaxed">
+                                我们完整保留了Flappy Bird的<strong>核心魅力</strong>：
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                                    <h4 class="font-bold text-yellow-800 mb-2">简单规则</h4>
+                                    <p class="text-yellow-700 text-sm">控制小鸟穿过管道，规则一目了然</p>
+                                </div>
+                                <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+                                    <h4 class="font-bold text-red-800 mb-2">虐心挑战</h4>
+                                    <p class="text-red-700 text-sm">高难度操作，极具挑战性和成就感</p>
+                                </div>
+                                <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                                    <h4 class="font-bold text-green-800 mb-2">快节奏</h4>
+                                    <p class="text-green-700 text-sm">单局时长短，适合碎片时间游玩</p>
+                                </div>
+                                <div class="bg-purple-50 border-l-4 border-purple-400 p-4 rounded">
+                                    <h4 class="font-bold text-purple-800 mb-2">高分竞技</h4
+>
+                                    <p class="text-purple-700 text-sm">记录最高分，挑战自我和朋友</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 像素复古美术 -->
+        <section class="py-16 bg-gradient-to-r from-orange-400 to-red-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white pixel-font mb-4">🎨 像素复古美术风格</h2>
+                    <p class="text-xl text-white opacity-90">精美像素艺术，唤起经典游戏回忆</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-xl text-center">
+                        <div class="text-4xl mb-3">🐦</div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">像素小鸟</h3>
+                        <p class="text-gray-600 text-sm">可爱的像素鸟形象，简洁而富有表现力</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-xl text-center">
+                        <div class="text-4xl mb-3">🏗️</div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">经典管道</h3>
+                        <p class="text-gray-600 text-sm">标志性的绿色像素管道，保持原汁原味</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-xl text-center">
+                        <div class="text-4xl mb-3">🌅</div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">动态背景</h3>
+                        <p class="text-gray-600 text-sm">蓝天白云像素背景，可能随时间变化</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-xl text-center">
+                        <div class="text-4xl mb-3">🎵</div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">8-bit音效</h3>
+                        <p class="text-gray-600 text-sm">复古电子音乐和音效，完美契合像素风格</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 社交传播特性 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 pixel-font mb-4">👥 天生的社交传播性</h2>
+                    <p class="text-xl text-gray-600">用声音玩游戏，本身就是话题</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-pink-500 rounded-full flex items-center justify-center text-white text-3xl">
+                            📱
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">易于分享</h3>
+                        <p class="text-gray-600">发声玩游戏的过程充满趣味，天然适合录制分享</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center text-white text-3xl">
+                            🎉
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">聚会互动</h3>
+                        <p class="text-gray-600">朋友聚会时的绝佳娱乐选择，增加互动乐趣</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl">
+                            🏆
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">挑战传播</h3>
+                        <p class="text-gray-600">声控高分挑战，激发用户创造各种有趣内容</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA区域 -->
+        <section class="py-20 bg-gradient-to-r from-purple-600 to-blue-600">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-white mb-6 pixel-font">准备好体验声控乐趣了吗？</h2>
+                <p class="text-xl text-white opacity-90 mb-8">了解详细玩法，开始你的声控飞行之旅</p>
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                    <a href="../../index.html" class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        🎮 立即试玩
+                    </a>
+                    <a href="gameplay.html" class="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        学习玩法
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 pixel-font">啊啊啊啊啊啊啊啊</h3>
+                    <p class="text-gray-300 text-sm">用声音，让小鸟飞！体验前所未有的声控游戏乐趣。</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">游戏信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="features.html" class="text-gray-300 hover:text-white transition-colors">游戏特色</a></li>
+                        <li><a href="gameplay.html" class="text-gray-300 hover:text-white transition-colors">玩法介绍</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">试玩游戏</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">开发信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="dev-log.html" class="text-gray-300 hover:text-white transition-colors">开发日志</a></li>
+                        <li><a href="team.html" class="text-gray-300 hover:text-white transition-colors">团队介绍</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">联系反馈</a></li>
+                        <li><a href="privacy.html" class="text-gray-300 hover:text-white transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 啊啊啊啊啊啊啊啊开发团队. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI美化展示 - 啊啊啊啊啊啊啊啊</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 展示页面特殊样式 */
+        .volume-tracker-container {
+            display: block !important;
+        }
+        .showcase-container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .showcase-title {
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            font-size: 36px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        .demo-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页按钮 -->
+    <div class="back-to-home-container">
+        <a href="../../index.html" class="back-to-home-button" title="返回游戏大全">
+            <span class="back-icon">🏠</span>
+            <span class="back-text">返回游戏大全</span>
+        </a>
+    </div>
+
+    <div class="showcase-container">
+        <h1 class="showcase-title">🎨 UI美化效果展示</h1>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">游戏主界面</h2>
+            <div class="game-container">
+                <div class="game-area">
+                    <canvas id="gameCanvas" width="480" height="640"></canvas>
+                    <div class="ui-overlay">
+                        <div id="scoreDisplay" class="score">12345</div>
+                        <div id="startScreen" class="screen start-screen">
+                            <h1>啊啊啊啊啊啊啊啊</h1>
+                            <p>通过发声控制小鸟飞行</p>
+                            <div class="mode-selector">
+                                <h3>选择游戏模式</h3>
+                                <div class="mode-options">
+                                    <label class="mode-option">
+                                        <input type="radio" name="gameMode" value="normal" checked>
+                                        <span class="mode-label">普通模式</span>
+                                        <span class="mode-desc">触碰边缘会死亡</span>
+                                    </label>
+                                    <label class="mode-option">
+                                        <input type="radio" name="gameMode" value="silly">
+                                        <span class="mode-label">傻鸟模式</span>
+                                        <span class="mode-desc">碰壁和碰柱子都不会死亡</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="game-button">开始游戏</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volume Tracker Container -->
+                <div class="volume-tracker-container" id="volumeTrackerContainer">
+                    <div class="volume-tracker-header">
+                        <h3>音量监控</h3>
+                        <div class="volume-status" id="volumeStatus">
+                            <span class="status-indicator listening" id="statusIndicator"></span>
+                            <span class="status-text" id="statusText">监听中</span>
+                        </div>
+                    </div>
+                    
+                    <div class="volume-display">
+                        <div class="volume-bar-container">
+                            <div class="volume-bar" id="volumeBar">
+                                <div class="volume-fill" id="volumeFill" style="width: 65%;"></div>
+                                <div class="volume-threshold-line"></div>
+                            </div>
+                            <div class="volume-labels">
+                                <span class="volume-label-min">静音</span>
+                                <span class="volume-label-max">最大</span>
+                            </div>
+                        </div>
+                        
+                        <div class="volume-value">
+                            <span class="volume-number" id="volumeNumber">65</span>
+                            <span class="volume-unit">%</span>
+                        </div>
+                        
+                        <div class="volume-tips">
+                            <p class="tip-text">💡 发出声音控制小鸟飞行</p>
+                            <p class="tip-text">🎯 音量越大，小鸟飞得越高</p>
+                        </div>
+
+                        <div class="website-link-container">
+                            <a href="website/啊啊啊啊啊啊网页说明/index.html" class="website-link-button">
+                                🌟 这是一个浮夸的游戏介绍官网
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">游戏结束界面</h2>
+            <div style="display: flex; justify-content: center;">
+                <div class="screen game-over-screen">
+                    <h2>游戏结束</h2>
+                    <p>最终得分: <span>9999</span></p>
+                    <button class="game-button">重新开始</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 动态演示音量变化
+        let demoVolume = 0;
+        let direction = 1;
+        
+        function animateVolumeDemo() {
+            const volumeFill = document.getElementById('volumeFill');
+            const volumeNumber = document.getElementById('volumeNumber');
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            
+            demoVolume += direction * 2;
+            
+            if (demoVolume >= 100) {
+                direction = -1;
+                demoVolume = 100;
+            } else if (demoVolume <= 0) {
+                direction = 1;
+                demoVolume = 0;
+            }
+            
+            volumeFill.style.width = demoVolume + '%';
+            volumeNumber.textContent = demoVolume;
+            
+            // 更新状态
+            statusIndicator.classList.remove('inactive', 'listening', 'active');
+            if (demoVolume > 60) {
+                statusIndicator.classList.add('active');
+                statusText.textContent = '检测到强音';
+            } else if (demoVolume > 30) {
+                statusIndicator.classList.add('active');
+                statusText.textContent = '检测到声音';
+            } else if (demoVolume > 10) {
+                statusIndicator.classList.add('listening');
+                statusText.textContent = '监听中';
+            } else {
+                statusIndicator.classList.add('listening');
+                statusText.textContent = '等待声音';
+            }
+        }
+        
+        // 每100ms更新一次演示
+        setInterval(animateVolumeDemo, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+🐦 官网装饰目录
+
+将您的装饰小鸟图片放在这里：
+
+📄 angry-bird-red.png     (64x64px) - 红色愤怒小鸟
+📄 angry-bird-yellow.png  (48x48px) - 黄色愤怒小鸟  
+📄 angry-bird-green.png   (40x40px) - 绿色愤怒小鸟
+📄 hero-bird.png          (96x96px) - 主角展示小鸟
+
+💡 提示：
+- 使用PNG格式保持透明背景
+- 保持像素艺术风格
+- 设计愤怒表情（皱眉、怒视）
+
+🚀 使用方法：
+1. 放入对应的图片文件
+2. 编辑官网HTML，将SVG替换为img标签
+3. 刷新官网查看效果
+
+📝 HTML替换示例：
+将 <svg>...</svg> 替换为：
+<img src="assets/ui/decorations/angry-bird-red.png" class="w-full h-full drop-shadow-lg" alt="愤怒小鸟">

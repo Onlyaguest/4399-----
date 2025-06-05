@@ -1,0 +1,17 @@
+📁 小鸟图片目录
+
+将您的小鸟图片放在这里：
+
+📄 bird-default.png    (30x20px) - 默认小鸟
+📄 bird-flap.png       (30x20px) - 扇翅膀状态
+📄 bird-fall.png       (30x20px) - 下落状态
+
+💡 提示：
+- 使用PNG格式保持透明背景
+- 保持像素艺术风格
+- 文件大小建议不超过50KB
+
+🚀 快速测试：
+1. 放入 bird-default.png
+2. 控制台输入：AssetTools.toggleBird()
+3. 刷新页面查看效果

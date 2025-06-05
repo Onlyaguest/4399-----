@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音效和特效演示 - 啊啊啊啊啊啊啊啊</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .demo-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 36px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-xl);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .demo-section h3 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .demo-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .demo-button {
+            background: linear-gradient(145deg, var(--accent-color), var(--accent-dark));
+            color: var(--text-light);
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            box-shadow: var(--shadow-medium);
+        }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+        .score-demo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 48px;
+            color: var(--score-color);
+            text-shadow:
+                3px 3px 0px var(--score-dark),
+                6px 6px 10px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(255, 87, 34, 0.6);
+            margin: 20px 0;
+        }
+        .volume-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .volume-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .volume-slider {
+            width: 150px;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--text-secondary);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            box-shadow: var(--shadow-medium);
+        }
+        .volume-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: none;
+            box-shadow: var(--shadow-medium);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">🎵 音效和特效演示</h1>
+        
+        <div class="demo-section">
+            <h3>🎼 背景音乐控制</h3>
+            <div class="demo-buttons">
+                <button class="demo-button" onclick="startMusic()">开始背景音乐</button>
+                <button class="demo-button" onclick="stopMusic()">停止背景音乐</button>
+                <button class="demo-button" onclick="toggleMute()">静音/取消静音</button>
+            </div>
+            <div class="volume-controls">
+                <div class="volume-control">
+                    <label style="color: var(--text-light); font-weight: 600;">音乐音量</label>
+                    <input type="range" class="volume-slider" min="0" max="100" value="30" 
+                           onchange="setMusicVolume(this.value)">
+                </div>
+                <div class="volume-control">
+                    <label style="color: var(--text-light); font-weight: 600;">音效音量</label>
+                    <input type="range" class="volume-slider" min="0" max="100" value="50" 
+                           onchange="setEffectsVolume(this.value)">
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>🔊 游戏音效</h3>
+            <div class="demo-buttons">
+                <button class="demo-button" onclick="playStartSound()">游戏开始音效</button>
+                <button class="demo-button" onclick="playScoreSound()">得分音效</button>
+                <button class="demo-button" onclick="playGameOverSound()">游戏结束音效</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>✨ 得分特效演示</h3>
+            <div class="score-demo" id="demoScore">12345</div>
+            <div class="demo-buttons">
+                <button class="demo-button" onclick="playScoreEffect()">得分特效</button>
+                <button class="demo-button" onclick="playGameStartEffect()">游戏开始特效</button>
+                <button class="demo-button" onclick="playGameOverEffect()">游戏结束特效</button>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>🎮 完整演示</h3>
+            <div class="demo-buttons">
+                <button class="demo-button" onclick="simulateGameStart()">模拟游戏开始</button>
+                <button class="demo-button" onclick="simulateScoring()">模拟连续得分</button>
+                <button class="demo-button" onclick="simulateGameOver()">模拟游戏结束</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include required scripts -->
+    <script src="scripts/soundManager.js"></script>
+    <script src="scripts/effectsManager.js"></script>
+    
+    <script>
+        let soundManager;
+        let effectsManager;
+        let demoScore = 0;
+        
+        // Initialize managers
+        async function initDemo() {
+            // Initialize sound manager
+            if (window.SoundManager) {
+                soundManager = new window.SoundManager();
+                await soundManager.init();
+                console.log('Demo sound manager initialized');
+            }
+            
+            // Initialize effects manager
+            if (window.EffectsManager) {
+                effectsManager = new window.EffectsManager();
+                const scoreElement = document.getElementById('demoScore');
+                const gameContainer = document.querySelector('.demo-container');
+                effectsManager.init(scoreElement, gameContainer);
+                console.log('Demo effects manager initialized');
+            }
+        }
+        
+        // Music controls
+        function startMusic() {
+            if (soundManager) soundManager.startBackgroundMusic();
+        }
+        
+        function stopMusic() {
+            if (soundManager) soundManager.stopBackgroundMusic();
+        }
+        
+        function toggleMute() {
+            if (soundManager) {
+                const isMuted = soundManager.toggleMute();
+                console.log('Muted:', isMuted);
+            }
+        }
+        
+        function setMusicVolume(value) {
+            if (soundManager) soundManager.setMusicVolume(value / 100);
+        }
+        
+        function setEffectsVolume(value) {
+            if (soundManager) soundManager.setEffectsVolume(value / 100);
+        }
+        
+        // Sound effects
+        function playStartSound() {
+            if (soundManager) soundManager.playGameStartSound();
+        }
+        
+        function playScoreSound() {
+            if (soundManager) soundManager.playScoreSound();
+        }
+        
+        function playGameOverSound() {
+            if (soundManager) soundManager.playGameOverSound();
+        }
+        
+        // Visual effects
+        function playScoreEffect() {
+            demoScore++;
+            document.getElementById('demoScore').textContent = demoScore;
+            if (effectsManager) effectsManager.playScoreEffect(demoScore);
+        }
+        
+        function playGameStartEffect() {
+            if (effectsManager) effectsManager.playGameStartEffect();
+        }
+        
+        function playGameOverEffect() {
+            if (effectsManager) effectsManager.playGameOverEffect();
+        }
+        
+        // Complete simulations
+        function simulateGameStart() {
+            demoScore = 0;
+            document.getElementById('demoScore').textContent = demoScore;
+            if (soundManager) {
+                soundManager.startBackgroundMusic();
+                soundManager.playGameStartSound();
+            }
+            if (effectsManager) effectsManager.playGameStartEffect();
+        }
+        
+        function simulateScoring() {
+            let count = 0;
+            const interval = setInterval(() => {
+                demoScore++;
+                document.getElementById('demoScore').textContent = demoScore;
+                if (soundManager) soundManager.playScoreSound();
+                if (effectsManager) effectsManager.playScoreEffect(demoScore);
+                
+                count++;
+                if (count >= 5) clearInterval(interval);
+            }, 800);
+        }
+        
+        function simulateGameOver() {
+            if (soundManager) {
+                soundManager.stopBackgroundMusic();
+                soundManager.playGameOverSound();
+            }
+            if (effectsManager) effectsManager.playGameOverEffect();
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', initDemo);
+    </script>
+</body>
+</html>

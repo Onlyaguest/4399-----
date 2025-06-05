@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最终布局测试 - 音量跟踪条</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Make volume tracker visible for testing */
+        .volume-tracker-container {
+            display: block !important;
+        }
+        .status-indicator.listening {
+            background-color: #FF9800;
+            box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-area">
+            <canvas id="gameCanvas" width="480" height="640"></canvas>
+            <div class="ui-overlay">
+                <div id="scoreDisplay" class="score">0</div>
+                <div id="startScreen" class="screen start-screen">
+                    <h1>最终布局测试</h1>
+                    <p>音量跟踪条应该显示在游戏右侧</p>
+                    <button class="game-button" onclick="simulateVolumeChanges()">开始音量模拟</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Volume Tracker Container -->
+        <div class="volume-tracker-container" id="volumeTrackerContainer">
+            <div class="volume-tracker-header">
+                <h3>音量监控</h3>
+                <div class="volume-status" id="volumeStatus">
+                    <span class="status-indicator listening" id="statusIndicator"></span>
+                    <span class="status-text" id="statusText">监听中</span>
+                </div>
+            </div>
+            
+            <div class="volume-display">
+                <div class="volume-bar-container">
+                    <div class="volume-bar" id="volumeBar">
+                        <div class="volume-fill" id="volumeFill" style="width: 25%;"></div>
+                        <div class="volume-threshold-line"></div>
+                    </div>
+                    <div class="volume-labels">
+                        <span class="volume-label-min">静音</span>
+                        <span class="volume-label-max">最大</span>
+                    </div>
+                </div>
+                
+                <div class="volume-value">
+                    <span class="volume-number" id="volumeNumber">25</span>
+                    <span class="volume-unit">%</span>
+                </div>
+                
+                <div class="volume-tips">
+                    <p class="tip-text">💡 发出声音控制小鸟飞行</p>
+                    <p class="tip-text">🎯 音量越大，小鸟飞得越高</p>
+                </div>
+
+                <div class="website-link-container">
+                    <a href="website/啊啊啊啊啊啊网页说明/index.html" class="website-link-button">
+                        🌟 这是一个浮夸的游戏介绍官网
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isSimulating = false;
+        let animationId;
+        
+        function simulateVolumeChanges() {
+            if (isSimulating) {
+                stopSimulation();
+                return;
+            }
+            
+            isSimulating = true;
+            document.querySelector('.game-button').textContent = '停止模拟';
+            
+            const volumeFill = document.getElementById('volumeFill');
+            const volumeNumber = document.getElementById('volumeNumber');
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            
+            let time = 0;
+            
+            function animate() {
+                if (!isSimulating) return;
+                
+                // Create a sine wave pattern for volume
+                const volume = Math.max(0, Math.min(100, 50 + 40 * Math.sin(time * 0.05)));
+                
+                volumeFill.style.width = volume + '%';
+                volumeNumber.textContent = Math.round(volume);
+                
+                // Update status based on volume
+                statusIndicator.classList.remove('inactive', 'listening', 'active');
+                if (volume > 60) {
+                    statusIndicator.classList.add('active');
+                    statusText.textContent = '检测到强音';
+                } else if (volume > 30) {
+                    statusIndicator.classList.add('active');
+                    statusText.textContent = '检测到声音';
+                } else if (volume > 10) {
+                    statusIndicator.classList.add('listening');
+                    statusText.textContent = '监听中';
+                } else {
+                    statusIndicator.classList.add('listening');
+                    statusText.textContent = '等待声音';
+                }
+                
+                time++;
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+        
+        function stopSimulation() {
+            isSimulating = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            document.querySelector('.game-button').textContent = '开始音量模拟';
+        }
+    </script>
+</body>
+</html>

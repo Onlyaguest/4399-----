@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啊啊啊啊啊啊啊啊</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 返回主页按钮 -->
+    <div class="back-to-home-container">
+        <a href="../../index.html" class="back-to-home-button" title="返回游戏大全">
+            <span class="back-icon">🏠</span>
+            <span class="back-text">返回游戏大全</span>
+        </a>
+    </div>
+
+    <div class="game-container">
+        <div class="game-area">
+            <canvas id="gameCanvas" width="480" height="640"></canvas>
+            <div class="ui-overlay">
+                <div id="scoreDisplay" class="score">0</div>
+                <div id="startScreen" class="screen start-screen">
+                    <h1>啊啊啊啊啊啊啊啊</h1>
+                    <p>通过发声控制小鸟飞行</p>
+                    <div class="mode-selector">
+                        <h3>选择游戏模式</h3>
+                        <div class="mode-options">
+                            <label class="mode-option">
+                                <input type="radio" name="gameMode" value="normal" checked>
+                                <span class="mode-label">普通模式</span>
+                                <span class="mode-desc">触碰边缘会死亡</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="gameMode" value="silly">
+                                <span class="mode-label">傻鸟模式</span>
+                                <span class="mode-desc">碰壁和碰柱子都不会死亡</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="startButton" class="game-button">开始游戏</button>
+                </div>
+                <div id="gameOverScreen" class="screen game-over-screen hidden">
+                    <h2>游戏结束</h2>
+                    <p>最终得分: <span id="finalScore">0</span></p>
+                    <button id="restartButton" class="game-button">重新开始</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume Tracker Container -->
+        <div class="volume-tracker-container" id="volumeTrackerContainer">
+            <div class="volume-tracker-header">
+                <h3>音量监控</h3>
+                <div class="volume-status" id="volumeStatus">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span class="status-text" id="statusText">待机中</span>
+                </div>
+            </div>
+
+            <div class="volume-display">
+                <div class="volume-bar-container">
+                    <div class="volume-bar" id="volumeBar">
+                        <div class="volume-fill" id="volumeFill"></div>
+                        <div class="volume-threshold-line"></div>
+                    </div>
+                    <div class="volume-labels">
+                        <span class="volume-label-min">静音</span>
+                        <span class="volume-label-max">最大</span>
+                    </div>
+                </div>
+
+                <div class="volume-value">
+                    <span class="volume-number" id="volumeNumber">0</span>
+                    <span class="volume-unit">%</span>
+                </div>
+
+                <div class="volume-tips">
+                    <p class="tip-text">💡 发出声音控制小鸟飞行</p>
+                    <p class="tip-text">🎯 音量越大，小鸟飞得越高</p>
+                </div>
+
+                <div class="website-link-container">
+                    <a href="website/啊啊啊啊啊啊网页说明/index.html" class="website-link-button">
+                        🌟 这是一个浮夸的游戏介绍官网
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files in dependency order -->
+    <script src="scripts/audioController.js"></script>
+    <script src="scripts/soundManager.js"></script>
+    <script src="scripts/effectsManager.js"></script>
+    <script src="scripts/bird.js"></script>
+    <script src="scripts/pipeController.js"></script>
+    <script src="scripts/collisionDetector.js"></script>
+    <script src="scripts/renderer.js"></script>
+    <script src="scripts/uiManager.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

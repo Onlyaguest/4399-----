@@ -1,0 +1,373 @@
+/* 咖啡大师 - 样式表 */
+
+:root {
+    /* 主色调 */
+    --dark-brown: #5D4037;
+    --cream: #FFF8E1;
+    --warm-brown: #8D6E63;
+    
+    /* 辅助色 */
+    --orange: #FF9800;
+    --green: #4CAF50;
+    --red: #F44336;
+    
+    /* 其他颜色 */
+    --light-brown: #D7CCC8;
+    --dark-text: #3E2723;
+    --light-text: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--dark-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FFF8E1" /><path d="M0 50 L100 50" stroke="%23D7CCC8" stroke-width="0.5" /><path d="M50 0 L50 100" stroke="%23D7CCC8" stroke-width="0.5" /></svg>');
+    background-size: 20px 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 主菜单样式 */
+#main-menu {
+    background-color: rgba(93, 64, 55, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    color: var(--light-text);
+}
+
+#main-menu h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#main-menu p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--light-brown);
+}
+
+button {
+    background-color: var(--warm-brown);
+    color: var(--light-text);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 游戏界面样式 */
+#game-screen {
+    width: 100%;
+    max-width: 1000px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cream);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+#top-bar {
+    background-color: var(--dark-brown);
+    color: var(--light-text);
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1rem;
+}
+
+#game-area {
+    display: flex;
+    flex: 1;
+    padding: 1rem;
+}
+
+#customer-area {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-right: 1rem;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+#work-area {
+    flex: 2;
+    background-color: rgba(141, 110, 99, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#customer-queue {
+    margin-top: 1rem;
+    min-height: 300px;
+}
+
+.customer {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.customer:hover {
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.customer.urgent {
+    border-left: 5px solid var(--red);
+}
+
+.customer.selected {
+    background-color: var(--orange);
+    color: var(--light-text);
+    border: 2px solid var(--warm-brown);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+    transform: scale(1.02);
+}
+
+.customer.selected .customer-name {
+    color: var(--light-text);
+    font-weight: bold;
+}
+
+.customer.selected .customer-order {
+    color: var(--light-text);
+    opacity: 0.9;
+}
+
+.customer.selected::before {
+    content: '📋';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    background-color: var(--warm-brown);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.customer.selected.urgent {
+    border-left: 5px solid #ff4d4f;
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
+}
+
+.customer-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.customer-order {
+    color: var(--dark-brown);
+}
+
+.customer-patience {
+    height: 5px;
+    background-color: var(--green);
+    margin-top: 0.5rem;
+    border-radius: 2px;
+    transition: width 0.3s linear;
+}
+
+#order-display {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+#ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.ingredient {
+    flex: 1;
+    min-width: 100px;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--light-brown);
+    color: var(--dark-text);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.ingredient:hover {
+    background-color: var(--warm-brown);
+    color: var(--light-text);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ingredient.selected {
+    background-color: var(--orange);
+    color: var(--light-text);
+    border: 2px solid var(--warm-brown);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.ingredient.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background-color: var(--warm-brown);
+    color: var(--light-text);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ingredient.selected-multiple {
+    background-color: #ff6b35;
+    border: 2px solid #d4380d;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+    animation: pulse 1.5s infinite;
+}
+
+.ingredient.selected-multiple::after {
+    content: attr(data-count);
+    background-color: #d4380d;
+    font-size: 10px;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(255, 107, 53, 0.8); }
+    100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.6); }
+}
+
+#making-progress {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+#make-coffee {
+    background-color: var(--green);
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin-top: auto;
+}
+
+#bottom-bar {
+    background-color: var(--dark-brown);
+    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* 游戏结束界面 */
+#game-over-screen {
+    background-color: rgba(93, 64, 55, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    color: var(--light-text);
+}
+
+#game-over-screen h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#final-score {
+    font-size: 2rem;
+    color: var(--orange);
+    font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #game-area {
+        flex-direction: column;
+    }
+    
+    #customer-area {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    #top-bar {
+        flex-wrap: wrap;
+    }
+    
+    #top-bar span {
+        margin: 0.2rem;
+    }
+}

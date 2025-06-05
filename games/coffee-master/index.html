@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咖啡大师 - 官咖经营模拟</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-menu">
+        <h1>咖啡大师</h1>
+        <p>官咖经营模拟</p>
+        <button id="start-idiot-mode">白痴模式</button>
+        <button id="start-hell-mode">地狱模式</button>
+        <button id="view-design-docs" disabled>查看设计文档 (稍后提供)</button>
+    </div>
+
+    <div id="game-screen" class="hidden">
+        <div id="top-bar">
+            <span>模式: <span id="game-mode"></span></span>
+            <span>时间: <span id="timer">00:00</span></span>
+            <span>金币: <span id="score">0</span></span>
+            <span>声誉: <span id="reputation">100</span></span>
+        </div>
+
+        <div id="game-area">
+            <div id="customer-area">
+                <h2>顾客队列</h2>
+                <div id="customer-queue"></div>
+            </div>
+            <div id="work-area">
+                <h2>制作区</h2>
+                <div id="order-display">当前订单: 无</div>
+                <div id="ingredients">
+                    <button class="ingredient" data-ingredient="coffee">咖啡豆</button>
+                    <button class="ingredient" data-ingredient="milk">牛奶</button>
+                    <button class="ingredient" data-ingredient="sugar">糖</button>
+                    <button class="ingredient" data-ingredient="water">水</button>
+                </div>
+                <div id="making-progress">制作进度: <span id="progress-text">空闲</span></div>
+                <button id="make-coffee" disabled>制作咖啡</button>
+            </div>
+        </div>
+
+        <div id="bottom-bar">
+            <button id="back-to-menu">返回主菜单</button>
+        </div>
+    </div>
+
+    <div id="game-over-screen" class="hidden">
+        <h2>游戏结束</h2>
+        <p>最终得分: <span id="final-score">0</span></p>
+        <button id="restart-game">重新开始</button>
+        <button id="main-menu-from-over">返回主菜单</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

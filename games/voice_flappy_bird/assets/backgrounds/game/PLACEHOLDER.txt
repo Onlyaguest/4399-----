@@ -1,0 +1,17 @@
+🌅 游戏背景目录
+
+将您的背景图片放在这里：
+
+📄 sky.jpg             (800x600px+) - 天空背景
+📄 ground.png           (800x50px) - 地面纹理
+📄 clouds.png           (透明背景) - 云朵装饰
+
+💡 提示：
+- 天空用JPG格式（文件较小）
+- 地面和云朵用PNG格式（支持透明）
+- 可以创建多套主题背景
+
+🚀 快速测试：
+1. 放入 sky.jpg 和 ground.png
+2. 控制台输入：AssetTools.toggleBackground()
+3. 刷新页面查看效果

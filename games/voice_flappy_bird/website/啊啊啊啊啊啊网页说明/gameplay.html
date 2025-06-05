@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩法介绍 - 啊啊啊啊啊啊啊啊声控Flappy Bird</title>
+    <meta name="description" content="详细了解啊啊啊啊啊啊啊啊的声控操作方法、游戏规则和声音校准步骤。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-b from-green-400 via-teal-300 to-blue-300 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-xl font-bold pixel-font">啊啊啊啊啊啊啊啊</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">首页</a>
+                        <a href="features.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">游戏特色</a>
+                        <a href="gameplay.html" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">玩法介绍</a>
+                        <a href="dev-log.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">开发日志</a>
+                        <a href="../../index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors bg-green-600 hover:bg-green-500 rounded-full">试玩</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">首页</a>
+                <a href="features.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">游戏特色</a>
+                <a href="gameplay.html" class="text-white block px-3 py-2 rounded-md text-base font-medium">玩法介绍</a>
+                <a href="dev-log.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">开发日志</a>
+                <a href="../../index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">试玩</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- 标题区域 -->
+        <section class="py-20 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl md:text-6xl font-bold text-white pixel-font mb-6 drop-shadow-lg">
+                    玩法介绍
+                </h1>
+                <p class="text-xl text-white mb-8 drop-shadow-md">
+                    掌握声控技巧，开启飞行冒险
+                </p>
+            </div>
+        </section>
+
+        <!-- 基本游戏规则 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 pixel-font mb-4">🎮 基本游戏规则</h2>
+                    <p class="text-xl text-gray-600">简单易懂，一分钟上手</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4
+gap-8">
+                    <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold mb-3">游戏目标</h3>
+                        <p class="text-blue-100">控制小鸟穿过尽可能多的管道障碍，获得高分</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-xl font-bold mb-3">得分方式</h3>
+                        <p class="text-green-100">成功穿过一对管道获得1分，记录最高分挑战自我</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-4xl mb-4">💥</div>
+                        <h3 class="text-xl font-bold mb-3">失败条件</h3>
+                        <p class="text-red-100">小鸟撞到管道或地面时游戏结束，挑战重新开始</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h3 class="text-xl font-bold mb-3">游戏节奏</h3>
+                        <p class="text-purple-100">快节奏单局游戏，适合碎片时间，随时开始</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 声控操作详解 -->
+        <section class="py-16 bg-gradient-to-r from-cyan-400 to-blue-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white pixel-font mb-4">🎤 声控操作详解</h2>
+                    <p class="text-xl text-white opacity-90">核心玩法 - 用声音控制小鸟</p>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-2xl">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6">基础操作原理</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">1</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-2">发出短促声音</h4>
+                                        <p class="text-gray-600">如"啊"、"嘿"、"跳"，或者拍手、吹气、弹舌等</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">2</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-2">系统检测音量</h4>
+                                        <p class="text-gray-600">当音量超过预设阈值且持续时间在合理范围内</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">3</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-2">小鸟执行飞扑</h4>
+                                        <p class="text-gray-600">立即向上飞扑，延迟小于200毫秒</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                                <h4 class="font-bold text-yellow-800 mb-2">💡 操作技巧</h4>
+                                <ul class="text-yellow-700 space-y-1 text-sm">
+                                    <li>• 声音要短促有力，避免长时间发声</li>
+                                    <li>• 建议在相对安静的环境下游玩</li>
+                                    <li>• 使用耳机可以提高识别准确率</li>
+                                    <li>• 掌握发声节奏，控制小鸟飞行高度</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-6 text-center">声音类型示例</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                                    <div class="text-3xl mb-2">🗣️</div>
+                                    <h4 class="font-bold mb-1">语音类</h4>
+                                    <p class="text-sm opacity-90">"啊"、"嘿"、"跳"</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                                    <div class="text-3xl mb-2">👏</div>
+                                    <h4 class="font-bold mb-1">动作类</h4>
+                                    <p class="text-sm opacity-90">拍手、弹指</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                                    <div class="text-3xl mb-2">💨</div>
+                                    <h4 class="font-bold mb-1">气息类</h4>
+                                    <p class="text-sm opacity-90">吹气、呼气</p>
+                                </div>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                                    <div class="text-3xl mb-2">👅</div>
+                                    <h4 class="font-bold mb-1">其他类</h4>
+                                    <p class="text-sm opacity-90">弹舌、咂嘴</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 声音校准步骤 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 pixel-font mb-4">🎛️ 声音校准步骤</h2>
+                    <p class="text-xl text-gray-600">优化声控体验的关键环节</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">1</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">环境检测</h3>
+                                <p class="text-gray-600 mb-4">首次启动游戏时，系统会自动检测周围环境的噪音水平，为你推荐合适的音量阈值。</p>
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <h4 class="font-bold text-blue-800 mb-2">建议环境</h4>
+                                    <ul class="text-blue-700 space-y-1 text-sm">
+                                        <li>• 相对安静的室内环境</li>
+                                        <li>• 避免风扇、空调等持续噪音源</li>
+                                        <li>• 使用耳机麦克风效果更佳</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">2</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">个性化调节</h3>
+                                <p class="text-gray-600 mb-4">根据你的发声习惯和音量大小，调整灵敏度参数，确保声控操作准确可靠。</p>
+                                <div class="bg-gray-100 rounded-lg p-6">
+                                    <div class="mb-4">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-sm font-medium text-gray-700">灵敏度调节</span>
+                                            <span class="text-sm text-gray-500">中等</span>
+                                        </div>
+                                        <div class="bg-gray-300 h-2 rounded-full">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                                            调节灵敏度
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">3</div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-3">实时测试</h3>
+                                <p class="text-gray-600 mb-4">在校准界面进行实时测试，确保你的声音能够被准确识别并触发小鸟飞扑。</p>
+                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <span class="font-bold text-purple-800">测试区域</span>
+                                        <span class="text-sm text-purple-600">发出声音测试</span>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-4 border-2 border-dashed border-purple-300 text-center">
+                                        <div class="text-2xl mb-2">🎤</div>
+                                        <p class="text-gray-600 text-sm">在这里发出声音测试校准效果</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 界面元素说明 -->
+        <section class="py-16 bg-gradient-to-r from-indigo-400 to-purple-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white pixel-font mb-4">📱 界面元素说明</h2>
+                    <p class="text-xl text-white opacity-90">熟悉游戏界面，提升操作效率</p>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-2xl">
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">主要界面元素</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">📊</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">得分显示</h4>
+                                        <p class="text-gray-600 text-sm">屏幕顶部显示当前得分和最高分</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">🎤</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">音量条</h4>
+                                        <p class="text-gray-600 text-sm">实时显示声音输入强度和阈值线</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 bg-yellow-50 rounded-lg">
+                                    <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-sm">⏸️
+</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">暂停按钮</h4>
+                                        <p class="text-gray-600 text-sm">屏幕右上角，点击暂停游戏</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 p-4 bg-purple-50 rounded-lg">
+                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white text-sm">🐦</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">游戏区域</h4>
+                                        <p class="text-gray-600 text-sm">小鸟和管道的主要游戏画面</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 text-white">
+                            <h3 class="text-xl font-bold mb-4 text-center">游戏界面预览</h3>
+                            <div class="bg-blue-400 rounded-lg p-4 mb-4 text-center text-black">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-bold">得分: 15</span>
+                                    <span class="text-sm">最高: 42</span>
+                                    <button class="bg-gray-700 text-white px-2 py-1 rounded text-xs">⏸️</button>
+                                </div>
+                                <div class="bg-green-300 h-32 rounded mb-4 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-4xl mb-2">🐦</div>
+                                        <div class="text-green-800 text-sm">游戏区域</div>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded p-2">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-xs">音量</span>
+                                        <span class="text-xs">阈值</span>
+                                    </div>
+                                    <div class="bg-gray-200 h-2 rounded-full">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏流程图 -->
+        <section class="py-16 bg-white bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 pixel-font mb-4">🔄 游戏流程图</h2>
+                    <p class="text-xl text-gray-600">完整的游戏体验流程</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">🎮</div>
+                            <h3 class="text-xl font-bold mb-3">开始界面</h3>
+                            <p class="text-blue-100 text-sm">点击开始按钮进入游戏，或进入设置进行声音校准</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">🎤</div>
+                            <h3 class="text-xl font-bold mb-3">游戏进行</h3>
+                            <p class="text-green-100 text-sm">使用声音控制小鸟飞扑，避开管道障碍，获得高分</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">⏸️</div>
+                            <h3 class="text-xl font-bold mb-3">暂停功能</h3>
+                            <p class="text-yellow-100 text-sm">随时暂停游戏，继续挑战或返回主菜单</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-400 to-pink-500 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">💥</div>
+                            <h3 class="text-xl font-bold mb-3">游戏结束</h3>
+                            <p class="text-red-100 text-sm">撞击后显示本局得分和最高分，选择重新开始</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">🔄</div>
+                            <h3 class="text-xl font-bold mb-3">重新挑战</h3>
+                            <p class="text-purple-100 text-sm">快速重新开始新一局，挑战更高分数</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-teal-400 to-cyan-500 rounded-xl p-6 text-white text-center">
+                            <div class="text-4xl mb-4">📱</div>
+                            <h3 class="text-xl font-bold mb-3">分享成果</h3>
+                            <p class="text-teal-100 text-sm">分享你的高分和声控游戏视频到社交平台</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 新手引导提示 -->
+        <section class="py-16 bg-gradient-to-r from-pink-400 to-red-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white pixel-font mb-4">💡 新手引导提示</h2>
+                    <p class="text-xl text-white opacity-90">快速上手的实用建议</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">🎯 操作技巧</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">掌握发声节奏</h4>
+                                    <p class="text-gray-600 text-sm">不要连续快速发声，掌握合适的间隔时间</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">观察音量条</h4>
+                                    <p class="text-gray-600 text-sm">时刻注意音量条的变化，调整发声强度</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">预判管道位置</h4>
+                                    <p class="text-gray-600 text-sm">提前规划飞行路径，避免临时反应不及</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">✓</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">保持冷静</h4>
+                                    <p class="text-gray-600 text-sm">失败时保持冷静，声控需要一定的适应期</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">⚠️ 注意事项</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">!</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">选择合适环境</h4>
+                                    <p class="text-gray-600 text-sm">避免在嘈杂环境下游玩，影响声控准确性</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">!</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">注意公共场合</h4>
+                                    <p class="text-gray-600 text-sm">在安静的公共场所请谨慎游玩，避免打扰他人</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">!</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">保护嗓子</h4>
+                                    <p class="text-gray-600 text-sm">长时间游玩时注意保护嗓子，适度休息</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">!</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">定期校准</h4>
+                                    <p class="text-gray-600 text-sm">更换环境或设备后，建议重新进行声音校准</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA区域 -->
+        <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-white mb-6 pixel-font">准备开始你的声控飞行之旅？</h2>
+                <p class="text-xl text-white opacity-90 mb-8">现在就开始游戏，体验前所未有的声控乐趣</p>
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                    <a href="../../index.html" class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        🎮 立即试玩
+                    </a>
+                    <a href="features.html" class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        了解特色
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 pixel-font">啊啊啊啊啊啊啊啊</h3>
+                    <p class="text-gray-300 text-sm">用声音，让小鸟飞！体验前所未有的声控游戏乐趣。</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">游戏信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="features.html" class="text-gray-300 hover:text-white transition-colors">游戏特色</a></li>
+                        <li><a href="gameplay.html" class="text-gray-300 hover:text-white transition-colors">玩法介绍</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">试玩游戏</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">开发信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="dev-log.html" class="text-gray-300 hover:text-white transition-colors">开发日志</a></li>
+                        <li><a href="team.html" class="text-gray-300 hover:text-white transition-colors">团队介绍</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">联系反馈</a></li>
+                        <li><a href="privacy.html" class="text-gray-300 hover:text-white transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 啊啊啊啊啊啊啊啊开发团队. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

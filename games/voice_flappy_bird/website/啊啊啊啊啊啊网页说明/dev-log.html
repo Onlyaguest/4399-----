@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发日志 - 啊啊啊啊啊啊啊啊声控Flappy Bird</title>
+    <meta name="description" content="了解啊啊啊啊啊啊啊啊的开发历程，从项目启动到功能完善的完整记录。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-b from-gray-800 via-gray-700 to-gray-900 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-xl font-bold pixel-font">啊啊啊啊啊啊啊啊</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">首页</a>
+                        <a href="features.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">游戏特色</a>
+                        <a href="gameplay.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">玩法介绍</a>
+                        <a href="dev-log.html" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors">开发日志</a>
+                        <a href="../../index.html" class="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors bg-green-600 hover:bg-green-500 rounded-full">试玩</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">首页</a>
+                <a href="features.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">游戏特色</a>
+                <a href="gameplay.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">玩法介绍</a>
+                <a href="dev-log.html" class="text-white block px-3 py-2 rounded-md text-base font-medium">开发日志</a>
+                <a href="../../index.html" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">试玩</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- 标题区域 -->
+        <section class="py-20 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl md:text-6xl font-bold text-white pixel-font mb-6 drop-shadow-lg">
+                    开发日志
+                </h1>
+                <p class="text-xl text-white mb-8 drop-shadow-md">
+                    记录啊啊啊啊啊啊啊啊的开发历程与技术演进
+                </p>
+            </div>
+        </section>
+
+        <!-- 开发日志列表 -->
+        <section class="py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <div id="dev-log-container" class="space-y-8">
+                    <!-- 开发日志内容将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA区域 -->
+        <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-white mb-6 pixel-font">体验我们的开发成果</h2>
+                <p class="text-xl text-white opacity-90 mb-8">现在就试玩游戏，感受声控技术的魅力</p>
+                <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                    <a href="../../index.html" class="inline-block bg-red-600 hover:bg-red-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        🎮 立即试玩
+                    </a>
+                    <a href="features.html" class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        了解特色
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 pixel-font">啊啊啊啊啊啊啊啊</h3>
+                    <p class="text-gray-300 text-sm">用声音，让小鸟飞！体验前所未有的声控游戏乐趣。</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">游戏信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="features.html" class="text-gray-300 hover:text-white transition-colors">游戏特色</a></li>
+                        <li><a href="gameplay.html" class="text-gray-300 hover:text-white transition-colors">玩法介绍</a></li>
+                        <li><a href="../../index.html" class="text-gray-300 hover:text-white transition-colors">试玩游戏</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">开发信息</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="dev-log.html" class="text-gray-300 hover:text-white transition-colors">开发日志</a></li>
+                        <li><a href="team.html" class="text-gray-300 hover:text-white transition-colors">团队介绍</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">联系反馈</a></li>
+                        <li><a href="privacy.html" class="text-gray-300 hover:text-white transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 啊啊啊啊啊啊啊啊开发团队. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/dev-log-data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // 开发日志页面特定的JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDevLogs();
+        });
+
+        function loadDevLogs() {
+            const container = document.getElementById('dev-log-container');
+            if (!container || typeof devLogData === 'undefined') return;
+
+            // 按日期排序（最新的在前）
+            const sortedLogs = devLogData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sortedLogs.forEach(log => {
+                const logElement = createLogElement(log);
+                container.appendChild(logElement);
+            });
+        }
+
+        function createLogElement(log) {
+            const article = document.createElement('article');
+            article.className = 'bg-white bg-opacity-95 rounded-xl p-8 shadow-xl';
+            
+            const phaseColors = {
+                '品牌升级': 'bg-red-500',
+                '项目启动': 'bg-blue-500',
+                '核心开发': 'bg-green-500',
+                '功能扩展': 'bg-purple-500',
+                '产品完善': 'bg-yellow-500'
+            };
+
+            article.innerHTML = `
+                <div class="flex items-start justify-between mb-6">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="px-3 py-1 ${phaseColors[log.phase] || 'bg-gray-500'} text-white text-sm rounded-full font-medium">
+                                ${log.phase}
+                            </span>
+                            <span class="text-gray-500 text-sm">${formatDate(log.date)}</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">${log.title}</h2>
+                        <p class="text-gray-600">${log.summary}</p>
+                    </div>
+                    <div class="text-right text-sm text-gray-500">
+                        <div>作者: ${log.author}</div>
+                    </div>
+                </div>
+                <div class="prose prose-lg max-w-none">
+                    <div class="dev-log-content">${formatContent(log.content)}</div>
+                </div>
+            `;
+
+            return article;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function formatContent(content) {
+            // 简单的Markdown到HTML转换
+            return content
+                .replace(/^# (.*$)/gm, '<h1 class="text-3xl font-bold text-gray-800 mb-4">$1</h1>')
+                .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold text-gray-800 mb-3 mt-6">$1</h2>')
+                .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold text-gray-800 mb-2 mt-4">$1</h3>')
+                .replace(/^\- (.*$)/gm, '<li class="ml-4">$1</li>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-2 py-1 rounded text-sm">$1</code>')
+                .replace(/```([^```]+)```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"><code>$1</code></pre>')
+                .replace(/\n\n/g, '</p><p class="mb-4">')
+                .replace(/^(?!<[h|l|p|c])/gm, '<p class="mb-4">')
+                .replace(/(?<!>)$/gm, '</p>');
+        }
+    </script>
+</body>
+</html>
