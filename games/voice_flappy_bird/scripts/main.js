@@ -179,12 +179,9 @@
             }
         }
 
-        // Start audio monitoring and show volume tracker
+        // Start audio monitoring
         if (audioController && audioController.isInitialized) {
             audioController.startMonitoring();
-            if (uiManager) {
-                uiManager.showVolumeTracker();
-            }
         } else {
             console.warn("Audio controller not ready, voice control will be disabled.");
             if (uiManager && (!audioController || !audioController.isInitialized)) {
@@ -228,12 +225,9 @@
             uiManager.updateScore(0); // Reset score on UI
         }
         
-        // Stop audio monitoring and hide volume tracker
+        // Stop audio monitoring
         if (audioController) {
             audioController.stopMonitoring();
-        }
-        if (uiManager) {
-            uiManager.hideVolumeTracker();
         }
 
         // Stop background music
@@ -365,12 +359,9 @@
             animationId = null;
         }
         
-        // Stop audio monitoring and hide volume tracker
+        // Stop audio monitoring
         if (audioController) {
             audioController.stopMonitoring();
-        }
-        if (uiManager) {
-            uiManager.hideVolumeTracker();
         }
 
         // Stop background music and play game over sound

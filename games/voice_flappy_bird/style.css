@@ -326,8 +326,9 @@ canvas:hover {
 .mode-option {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     cursor: pointer;
-    padding: 15px;
+    padding: 12px 15px;
     border-radius: var(--border-radius-md);
     transition: all var(--transition-medium);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -388,18 +389,9 @@ canvas:hover {
 .mode-label {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 2px;
     display: block;
     transition: all var(--transition-medium);
-}
-
-.mode-desc {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-left: auto;
-    font-style: italic;
-    font-weight: 500;
-    transition: color var(--transition-medium);
+    flex: 1;
 }
 
 /* Volume Tracker Styles */
@@ -414,7 +406,7 @@ canvas:hover {
     font-family: 'Nunito', sans-serif;
     box-shadow: var(--shadow-strong);
     height: fit-content;
-    display: none; /* Hidden by default, shown during gameplay */
+    display: block; /* Always visible */
     flex-shrink: 0; /* Prevent shrinking */
     align-self: flex-start; /* Align to top */
     transition: all var(--transition-medium);
